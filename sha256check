@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [[ -z "$1" || -z "$2" ]]; then
+    echo "Usage: sha256check [FILE] [SHA256SUM]"
+    exit
+fi
+
+sum=`sha256sum "$1" | cut -d " " -f1` 
+
+echo "file: $sum"
+echo "input: $2"
+echo ""
+
+if [[ "$sum" == "$2" ]]; then
+    echo "MATCH"
+else
+    echo "NO MATCH !!!"
+fi

@@ -1,0 +1,1 @@
+/home/jjnkn/.bash_aliases

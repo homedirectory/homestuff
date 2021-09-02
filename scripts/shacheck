@@ -1,1 +1,18 @@
-/home/jjnkn/scripts/shacheck
+#!/bin/bash
+
+if [[ -z $1 || -z $2 || -z $3 ]]; then
+    echo "Usage: sha256check [SHA_TYPE] [FILE] [SHA256SUM]"
+    exit
+fi
+
+filesum=`${1}sum "$2" | cut -d " " -f1` 
+
+echo "file: $filesum"
+echo "input: $3"
+echo ""
+
+if [[ "$filesum" == "$3" ]]; then
+    echo "MATCH"
+else
+    echo "NO MATCH !!!"
+fi

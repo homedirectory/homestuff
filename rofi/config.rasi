@@ -1,0 +1,12 @@
+configuration {
+ modi: "drun,window,file-browser,run";
+ theme: "solarized";
+ font: "hack 10";
+ width: 30;
+ columns: 1;
+ lines: 10;
+ padding: 10;
+ fullscreen: false;
+ hide-scrollbar: true;
+ }
+@import "/usr/local/share/rofi/themes/android_notification.rasi"

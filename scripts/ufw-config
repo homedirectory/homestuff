@@ -1,1 +1,12 @@
-/home/jjnkn/scripts/ufw-config
+#!/bin/bash
+
+cfg_file="$HOME/.config/ufw.rules"
+
+while read rule; do
+    if [[ -z $(echo $rule | grep "^#") ]]; then
+    echo $rule
+    sudo ufw $rule
+    fi
+done < $cfg_file
+
+sudo ufw reload

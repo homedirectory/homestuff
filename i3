@@ -1,1 +1,0 @@
-/home/jjnkn/.config/i3/

@@ -87,9 +87,6 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# some more ls aliases
-alias ll='ls -alF'
-
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
@@ -123,7 +120,9 @@ fi
 #export PS1="\[$(tput setaf 2)\]\u\[$(tput setaf 7)\]@\[$(tput setaf 6)\]\h\[$(tput setaf 7)\]:\[$(tput setaf 4)\]\w\[$(tput setaf 7)\] $ \[$(tput sgr0)\]"
 export PS1="\[$(tput setaf 4)\]\w \[$(tput bold)\]\[$(tput setaf 7)\]>>\[$(tput sgr0)\] "
 
-# PATH
-export PATH="${HOME}/scripts:${PATH}"
-export PATH="${HOME}/bin:${PATH}"
+export EDITOR=/usr/bin/vim
 
+export ANKI_NOHIGHDPI=1
+
+# shell options
+shopt -s extglob

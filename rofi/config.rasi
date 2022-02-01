@@ -1,6 +1,5 @@
 configuration {
- modi: "drun,window,file-browser,run";
- theme: "solarized";
+ modi: "drun,window,run";
  font: "hack 10";
  width: 30;
  columns: 1;
@@ -9,4 +8,5 @@ configuration {
  fullscreen: false;
  hide-scrollbar: true;
  }
+@theme "solarized"
 @import "/usr/local/share/rofi/themes/android_notification.rasi"

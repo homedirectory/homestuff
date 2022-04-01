@@ -1,0 +1,165 @@
+BASEDIR="$HOME/.config/sketchybar"
+PLUGINS_DIR="${BASEDIR}/plugins"
+ITEMS_DIR="${BASEDIR}/items"
+
+ICON_SOLID_FONT="Font Awesome 6 Free:Solid:15.0"
+ICON_REGULAR_FONT="Font Awesome 6 Free:Regular:15.0"
+#ICON_SOLID_FONT="SauceCodePro Nerd Font:Bold:15.0"
+ICON_BRANDS_FONT="Font Awesome 6 Brands:Regular:15.0"
+LABEL_FONT="Fantasque Sans Mono:Bold:15.0"
+
+BAR_COLOR=0xff21242d
+TRANSPARENT_COLOR=0x00000000
+ICON_HIGHLIGHT_COLOR=0xffeceff4
+ICON_DEFAULT_COLOR=0xff616E88
+LABEL_HIGHLIGHT_COLOR=0xffeceff4
+LABEL_DEFAULT_COLOR=0xff616E88
+BRACKET_HIGHLIGHT_COLOR=0xffd9e3f0
+
+
+############## BAR ############## 
+sketchybar -m --bar height=25 \
+                    blur_radius=50   \
+                    position=top     \
+                    y_offset=5 \
+                    padding_left=10  \
+                    padding_right=10 \
+                    color=${TRANSPARENT_COLOR} \
+                    corner_radius=8 \
+                    margin=6
+
+
+############## GLOBAL DEFAULTS ############## 
+sketchybar -m --default \
+    updates=when_shown                    \
+    drawing=on                            \
+    cache_scripts=on                      \
+    icon.font="${ICON_SOLID_FONT}"  \
+    icon.color=${ICON_DEFAULT_COLOR} \
+    icon.highlight_color=${ICON_HIGHLIGHT_COLOR} \
+    icon.padding_left=8 \
+    icon.padding_right=2 \
+    label.font="${LABEL_FONT}" \
+    label.color=${LABEL_DEFAULT_COLOR} \
+    label.highlight_color=${LABEL_HIGHLIGHT_COLOR} \
+    label.padding_left=4 \
+    label.padding_right=0
+
+############## SPACES ######################
+### SPACE 1 ###
+sketchybar                                         \
+  --add space s1 left                             \
+  --set s1 associated_display=1                   \
+    associated_space=1                             \
+    icon= \
+    icon.font="${ICON_SOLID_FONT}" \
+    click_script="yabai -m space --focus 1"  
+
+### SPACE 2 ###
+sketchybar                                         \
+  --add space s2 left                             \
+  --set s2 associated_display=1                   \
+    associated_space=2                             \
+    icon= \
+    icon.font="${ICON_BRANDS_FONT}" \
+    click_script="yabai -m space --focus 2"
+
+### SPACE 3 ###
+sketchybar                                         \
+  --add space s3 left                             \
+  --set s3 associated_display=1                   \
+    associated_space=3                             \
+    icon= \
+    icon.font="${ICON_REGULAR_FONT}" \
+    click_script="yabai -m space --focus 3"
+
+### SPACE 4 ###
+sketchybar                                         \
+  --add space s4 left                             \
+  --set s4 associated_display=1                   \
+    associated_space=4                             \
+    icon= \
+    click_script="yabai -m space --focus 4"
+
+### SPACE 5 ###
+sketchybar                                         \
+  --add space s5 left                             \
+  --set s5 associated_display=1                   \
+    associated_space=5                             \
+    icon= \
+    icon.font="${ICON_REGULAR_FONT}" \
+    click_script="yabai -m space --focus 5"
+
+### SPACE 6 ###
+sketchybar                                         \
+  --add space s6 left                             \
+  --set s6 associated_display=1                   \
+    associated_space=6                             \
+    icon=6 \
+    click_script="yabai -m space --focus 6"
+
+### SPACE 7 ###
+sketchybar                                         \
+  --add space s7 left                             \
+  --set s7 associated_display=1                   \
+    associated_space=7                             \
+    icon=7 \
+    click_script="yabai -m space --focus 7"
+
+### SPACE 8 ###
+sketchybar                                         \
+  --add space s8 left                             \
+  --set s8 associated_display=1                   \
+    associated_space=8                             \
+    icon=8 \
+    click_script="yabai -m space --focus 8"
+
+### SPACE 9 ###
+sketchybar                                         \
+  --add space s9 left                             \
+  --set s9 associated_display=1                   \
+    associated_space=9                             \
+    icon=9 \
+    click_script="yabai -m space --focus 9"
+
+### SPACE 10 (0) ###
+sketchybar                                         \
+  --add space s10 left                             \
+  --set s10 associated_display=1                   \
+    associated_space=10                             \
+    icon=0 \
+    click_script="yabai -m space --focus 10"
+
+
+############## BRACKETS ######################
+sketchybar                                                \
+  --add bracket primary_spaces_bracket                    \
+    s1                                                   \
+    s2                                                 \
+    s3                                                  \
+    s4                                              \
+    s5 \
+    s6 \
+    s7 \
+    s8 \
+    s9 \
+    s10 \
+  --set primary_spaces_bracket                            \
+    background.color=${BAR_COLOR}                       \
+    background.border_color=${BRACKET_HIGHLIGHT_COLOR}   \
+    background.border_width=0                             \
+    background.corner_radius=8
+
+
+############## RIGHT ITEMS ############## 
+#source "${ITEMS_DIR}/cpu.sh"
+
+
+###################### CENTER ITEMS ###################
+source "${ITEMS_DIR}/window_title.sh"
+
+
+############## FINALIZING THE SETUP ##############
+sketchybar -m --update
+
+echo "sketchybar configuration loaded.."

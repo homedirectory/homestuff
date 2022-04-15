@@ -7,18 +7,21 @@ set backspace=indent,eol,start
 
 syntax enable
 
+" no delay escaping visual mode
+set timeoutlen=1000 ttimeoutlen=0
+
 " ======= Vundle =======
 "filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
-
-call vundle#end()
-filetype plugin indent on    " required
+"set rtp+=~/.vim/bundle/Vundle.vim
+"call vundle#begin()
+"" let Vundle manage Vundle, required
+"Plugin 'VundleVim/Vundle.vim'
+"Plugin 'Valloric/YouCompleteMe'
+"
+"call vundle#end()
+"filetype plugin indent on    " required
 
 "colorscheme nord
 "hi Normal guibg=#111111 ctermbg=black

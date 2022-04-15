@@ -10,11 +10,14 @@ ralt - 8 : yabai -m space --focus 8
 ralt - 9 : yabai -m space --focus 9
 ralt - 0 : yabai -m space --focus 10
 
+ralt - left : yabai -m space --focus prev
+ralt - right : yabai -m space --focus next
+
 # create new space and focus
 ralt - n : yabai -m space --create && index=$(yabai -m query --spaces --display | jq ".[-1] | .index") && yabai -m space --focus $index
 
 # destroy focused space
-rcmd + ralt - q : yabai -m space --destroy
+shift + ralt - q : yabai -m space --destroy
 
 # close focused window
 ralt - q : yabai -m window --close
@@ -54,6 +57,14 @@ rcmd + ralt - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 # restart sketchybar
 #rcmd + ralt - s : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.sketchybar"
 rcmd + ralt - s : brew services restart sketchybar
+
+# toggle window float
+# grid <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
+lcmd + lalt - z : yabai -m window --toggle float;\
+         yabai -m window --grid 1:7:1:0:5:0
+
+# flameshot
+lctrl + lcmd - p: /usr/local/Caskroom/flameshot/11.0.0/flameshot.app/Contents/MacOS/flameshot gui
 
 # send window to desktop and follow focus
 # shift + cmd - z : yabai -m window --space next; yabai -m space --focus next

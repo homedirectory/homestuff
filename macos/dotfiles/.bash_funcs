@@ -73,7 +73,23 @@ yabai() {
         else
             command yabai -m query --windows | jq ".[] | {app,title}"
         fi
+    elif [[ $1 == "list-window" ]]; then
+        if [[ $# -lt 2 ]]; then
+            echo "yabai list-window APP_NAME"
+        else
+            command yabai -m query --windows | jq ".[] | select(.app == \"$2\")"
+        fi
+    elif [[ $1 == "active-window" ]]; then
+        command yabai -m query --windows | jq ".[] | select((.\"has-focus\" == true) and (.\"is-visible\" == true))"
     else
         command yabai "$@"
+    fi
+}
+
+# if there is no man entry, call CMD --help | less
+man() {
+    command man "$@"
+    if [[ $? -eq 1 ]]; then
+        command "$@" --help | less
     fi
 }

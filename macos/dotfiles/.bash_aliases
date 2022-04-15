@@ -1,6 +1,6 @@
 alias la='exa -a --icons'
 alias l='exa --icons'
-alias ll='exa -l -G --icons'
+alias ll='exa -l -g -G --icons'
 alias lt='l -T'
 
 alias grep='egrep --color=auto'
@@ -24,3 +24,9 @@ alias sshoff="sudo killall sshd"
 alias t="tmux"
 
 alias lg="lazygit"
+
+alias c="pbcopy"
+
+alias mpa="mpv --no-video"
+
+alias r="ranger"

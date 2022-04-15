@@ -5,7 +5,20 @@ inoremap <C-Left> <C-O>b
 inoremap <C-Right> <C-O>e
 set backspace=indent,eol,start
 
-syntax on
+syntax enable
+
+" ======= Vundle =======
+"filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'Valloric/YouCompleteMe'
+
+call vundle#end()
+filetype plugin indent on    " required
 
 "colorscheme nord
 "hi Normal guibg=#111111 ctermbg=black
@@ -14,6 +27,7 @@ syntax on
 set number
 set relativenumber
 
+set incsearch
 set hlsearch
 set ic
 
@@ -84,6 +98,7 @@ Plug 'preservim/nerdtree'
 Plug 'arcticicestudio/nord-vim'
 Plug 'maksimr/vim-jsbeautify'
 Plug 'lervag/vimtex'
+Plug 'OmniSharp/omnisharp-vim'
 
 call plug#end()
 

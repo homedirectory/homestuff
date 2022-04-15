@@ -40,3 +40,9 @@ export HOMEBREW_NO_ANALYTICS=1
 # privacy
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export POWERSHELL_TELEMETRY_OPTOUT=1
+
+# pyenv
+export PATH="$HOME/.pyenv/shims:${PATH}"
+
+#mpv
+export MPV_HOME="$HOME/.config/mpv"

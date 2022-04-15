@@ -3,6 +3,7 @@
 sketchybar                                                \
     --add event window_focus                                \
     --add event title_change                                \
+    --add event reload \
     --add item window_title center                          \
     --set window_title                                      \
     icon=                                           \
@@ -13,7 +14,10 @@ sketchybar                                                \
     window_focus                                          \
     front_app_switched                                    \
     space_change                                          \
-    title_change
+    title_change \
+    reload
+
+#sketchybar --trigger reload NAME=window_title INFO=$(yabai active-window | jq -r ".app")
 
 sketchybar                                                \
     --add bracket center                                    \

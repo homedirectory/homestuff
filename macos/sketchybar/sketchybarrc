@@ -1,6 +1,7 @@
 BASEDIR="$HOME/.config/sketchybar"
 PLUGINS_DIR="${BASEDIR}/plugins"
 ITEMS_DIR="${BASEDIR}/items"
+ENV_DIR="${BASEDIR}/env"
 
 ICON_SOLID_FONT="Font Awesome 6 Free:Solid:15.0"
 ICON_REGULAR_FONT="Font Awesome 6 Free:Regular:15.0"
@@ -16,6 +17,7 @@ LABEL_HIGHLIGHT_COLOR=0xffeceff4
 LABEL_DEFAULT_COLOR=0xff616E88
 BRACKET_HIGHLIGHT_COLOR=0xffd9e3f0
 
+rm -r ${ENV_DIR}/*
 
 ############## BAR ############## 
 sketchybar -m --bar height=25 \
@@ -95,7 +97,7 @@ sketchybar                                         \
   --add space s6 left                             \
   --set s6 associated_display=1                   \
     associated_space=6                             \
-    icon=6 \
+    icon= \
     click_script="yabai -m space --focus 6"
 
 ### SPACE 7 ###
@@ -131,7 +133,7 @@ sketchybar                                         \
     click_script="yabai -m space --focus 10"
 
 
-############## BRACKETS ######################
+############## LEFT BRACKETS ######################
 sketchybar                                                \
   --add bracket primary_spaces_bracket                    \
     s1                                                   \
@@ -153,6 +155,8 @@ sketchybar                                                \
 
 ############## RIGHT ITEMS ############## 
 #source "${ITEMS_DIR}/cpu.sh"
+#source "${ITEMS_DIR}/mpv.sh"
+source "${ITEMS_DIR}/clock.sh"
 
 
 ###################### CENTER ITEMS ###################

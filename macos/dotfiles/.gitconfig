@@ -1,8 +1,0 @@
-[color]
-    ui = true
-[user]
-    name = homedirectory
-[credential]
-    helper = osxkeychain
-[core]
-    commentChar = %

@@ -1,13 +1,10 @@
 set term=xterm-256color
 
-" macOS specific
-inoremap <C-Left> <C-O>b
-inoremap <C-Right> <C-O>e
 set backspace=indent,eol,start
 
 " show line numbers
-set number
-set relativenumber
+"set number
+"set relativenumber
 
 set hlsearch
 set ic
@@ -31,23 +28,8 @@ set clipboard=unnamedplus,unnamed
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 
-" <Ctrl-e> in insert mode = :w in normal mode (SAVING THE FILE)
-inoremap <C-s> <C-O>:w<CR>
-
 " <Ctrl-z> in insert mode = u in normal mode (UNDO)
 inoremap <C-z> <C-O>u
-
-"execute "set <M-f>=\ef"
-"execute "set <M-i>=\ei"
-
-" <Alt-f> to switch modes
-inoremap <M-f> <ESC>
-nnoremap <M-f> a
-" <Alt-i> to switch modes
-inoremap <M-i> <ESC>
-nnoremap <M-i> a
-inoremap <A-i> <ESC>
-nnoremap <A-i> a
 
 " j = left
 " k = up
@@ -58,8 +40,13 @@ noremap l j
 noremap k k
 noremap j h
 
+" K = half screen up
+noremap K <C-U> 
+" L = half screen down
+noremap L <C-D>
+
 " ' -> ;
-nnoremap ' ;
+noremap ' ;
 
 " move cursor between split windows
 " left

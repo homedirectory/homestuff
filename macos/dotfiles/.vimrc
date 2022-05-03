@@ -1,8 +1,5 @@
 set term=xterm-256color
 
-" macOS specific
-inoremap <C-Left> <C-O>b
-inoremap <C-Right> <C-O>e
 set backspace=indent,eol,start
 
 syntax enable
@@ -29,13 +26,12 @@ set timeoutlen=1000 ttimeoutlen=0
 " show line numbers
 set number
 set relativenumber
+" smoother without it
+set nocursorline
 
 set incsearch
 set hlsearch
 set ic
-
-" enable enter in escape mode
-map <Enter> o<ESC>
 
 " tab = 4 spaces
 set tabstop=4
@@ -46,14 +42,35 @@ set autoindent
 " copy to clipboard
 set clipboard=unnamedplus,unnamed
 
+set backspace=indent,eol,start
+
+"""""""""""""""""""""""""
+" STATUSLINE
+"""""""""""""""""""""""""
+
+" always display the status line
+set laststatus=2
+
+set statusline=%f%m\ \ \ \ %l:%c
+
+
 """""""""""""""""""""""""
 " KEY MAPPINGS
-""""""""""""""""""""""""
+"""""""""""""""""""""""""
 
-" <Ctrl-l> redraws the screen and removes any search highlighting.
+" macOS jump words with Ctrl
+inoremap <C-Left> <C-O>b
+inoremap <C-Right> <C-O>e
+
+" enable enter in normal mode
+map <Enter> o<ESC>
+
+" redraw the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>
+" toggle search highlighting
+nnoremap <silent> h :set hls!<CR>
 
-" <Ctrl-e> in insert mode = :w in normal mode (SAVING THE FILE)
+" <Ctrl-s> in insert mode = :w in normal mode (SAVING THE FILE)
 inoremap <C-s> <C-O>:w<CR>
 
 " <Ctrl-z> in insert mode = u in normal mode (UNDO)
@@ -62,9 +79,6 @@ inoremap <C-z> <C-O>u
 execute "set <M-f>=\ef"
 execute "set <M-i>=\ei"
 
-" <Alt-f> to switch modes
-inoremap <M-f> <ESC>
-nnoremap <M-f> a
 " <Alt-i> to switch modes
 inoremap <M-i> <ESC>
 nnoremap <M-i> a
@@ -78,8 +92,13 @@ noremap l j
 noremap k k
 noremap j h
 
+" K = half screen up
+noremap K <C-U> 
+" L = half screen down
+noremap L <C-D>
+
 " ' -> ;
-nnoremap ' ;
+noremap ' ;
 
 " move cursor between split windows
 " left
@@ -101,7 +120,7 @@ Plug 'preservim/nerdtree'
 Plug 'arcticicestudio/nord-vim'
 Plug 'maksimr/vim-jsbeautify'
 Plug 'lervag/vimtex'
-Plug 'OmniSharp/omnisharp-vim'
+"Plug 'OmniSharp/omnisharp-vim'
 
 call plug#end()
 

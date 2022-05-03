@@ -18,15 +18,15 @@ alias jqc='jq | pbcopy'
 # gtk
 alias jhbuild="PATH=$HOME/.new_local/bin:$PATH jhbuild"
 
+# ssh
 alias sshon="sudo /usr/sbin/sshd -p 22"
 alias sshoff="sudo killall sshd"
 
 alias t="tmux"
-
 alias lg="lazygit"
-
 alias c="pbcopy"
-
 alias mpa="mpv --no-video"
-
 alias r="ranger"
+alias firefox="/Applications/Firefox.app/Contents/MacOS/firefox"
+alias fm="vifm"
+alias richmd="python -m rich.markdown"

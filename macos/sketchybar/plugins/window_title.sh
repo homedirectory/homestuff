@@ -1,3 +1,4 @@
 #!/usr/bin/env sh
 
-sketchybar --set $NAME label="$INFO"
+[[ -n "$INFO" ]] && sketchybar --set $NAME label="$INFO"
+

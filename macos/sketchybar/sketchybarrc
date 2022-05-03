@@ -156,7 +156,20 @@ sketchybar                                                \
 ############## RIGHT ITEMS ############## 
 #source "${ITEMS_DIR}/cpu.sh"
 #source "${ITEMS_DIR}/mpv.sh"
-source "${ITEMS_DIR}/clock.sh"
+#source "${ITEMS_DIR}/clock.sh"
+source "${ITEMS_DIR}/date.sh"
+source "${ITEMS_DIR}/battery.sh"
+source "${ITEMS_DIR}/kblayout.sh"
+
+### RIGHT BRACKETS ###
+sketchybar \
+    --add bracket right \
+    clock date battery kblayout \
+    --set right \
+    background.color=${BAR_COLOR} \
+    background.border_color=${BRACKET_HIGHLIGHT_COLOR} \
+    background.border_width=0 \
+    background.corner_radius=8
 
 
 ###################### CENTER ITEMS ###################

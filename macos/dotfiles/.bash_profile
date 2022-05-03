@@ -46,3 +46,8 @@ export PATH="$HOME/.pyenv/shims:${PATH}"
 
 #mpv
 export MPV_HOME="$HOME/.config/mpv"
+
+# annoying Apple
+defaults write com.apple.appstored LastUpdateNotification -date "2029-12-12 12:00:00 +0000"
+
+export EDITOR=vim

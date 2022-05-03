@@ -65,6 +65,8 @@ yabai -m rule --add app="Eclipse" title!=".+ - Eclipse IDE" manage=off
 yabai -m rule --add app="Firefox" title=".*NoScript.*" manage=off
 yabai -m rule --add app="Firefox" title="Library" manage=off
 yabai -m rule --add app="System Preferences" manage=off
+yabai -m rule --add app="Preview" manage=off
+yabai -m rule --add app="Calculator" manage=off
 yabai -m rule --add app="GIMP.*" manage=off
 yabai -m rule --add app="Telegram" manage=off
 yabai -m rule --add app="Flameshot" manage=off native-fullscreen=off
@@ -72,6 +74,6 @@ yabai -m rule --add app=".*Unity.*" manage=off native-fullscreen=off
 
 # grid=<rows>:<cols>:<start-x>:<start-y>:<width>:<height>
 yabai -m rule --add app="Telegram" title="Telegram" grid=3:6:0:0:3:3 manage=off
-yabai -m rule --add app="Slack" grid=3:5:3:0:2:3 manage=off
+yabai -m rule --add app="Slack" grid=3:6:3:0:3:3 manage=off
 
 echo "yabai configuration loaded.."

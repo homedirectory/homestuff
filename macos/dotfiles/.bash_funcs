@@ -26,11 +26,23 @@ mvn() {
         else
             command mvn install
         fi
+    elif [[ $1 == "ci" ]]; then
+        if [[ -n "$rest" ]]; then
+            command mvn clean install "$rest"
+        else
+            command mvn clean install
+        fi
     elif [[ $1 == "gen" ]]; then
         if [[ -n "$rest" ]]; then
             command mvn archetype:generate "$rest"
         else
             command mvn archetype:generate
+        fi
+    elif [[ $1 == "t" ]]; then
+        if [[ -n "$rest" ]]; then
+            command mvn test "$rest"
+        else
+            command mvn test
         fi
     else
         command mvn "$@"

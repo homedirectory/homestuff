@@ -1,0 +1,14 @@
+# keybindings daemon
+sxhkd &
+
+# compositor
+~/.config/picom/picom.sh &
+
+# wallpaper
+~/scripts/setwall &
+
+# notifications server
+dunst >> /tmp/dunst.log &
+
+# bar
+xfce4-panel &

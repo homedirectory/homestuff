@@ -1,0 +1,67 @@
+let mapleader=" "
+map <C-x> <leader>
+
+set incsearch
+set hlsearch
+set ic
+
+" enable enter in escape mode
+map <Enter> o<ESC>
+
+" tab = 4 spaces
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set autoindent
+
+" don't copy to clipboard by default
+set clipboard=
+" Ctrl-c copy from register to clipboard
+nnoremap <C-c> :let @+=@" <CR>
+
+"""""""""""""""""""""""""
+" KEY MAPPINGS
+""""""""""""""""""""""""
+
+" <Ctrl-l> redraws the screen and removes any search highlighting.
+nnoremap <silent> <C-l> :nohl<CR><C-l>
+" toggle search highlighting
+nnoremap <silent> h :set hls!<CR>
+
+" j = left
+" k = up
+" l = down
+" ; = right
+noremap ; l
+noremap l j
+noremap k k
+noremap j h
+
+" ' -> ;
+noremap ' ;
+
+" move cursor between split windows
+" left
+nnoremap <C-w>j <C-w>h
+" up
+nnoremap <C-w>k <C-w>k
+" down
+nnoremap <C-w>l <C-w>j
+" right
+nnoremap <C-w>; <C-w>l
+
+" switch between tabs
+nnoremap <Tab> gt
+nnoremap <S-Tab> gT
+
+" yank inside braces { }
+nnoremap yir yi{
+" q = "
+nnoremap yiq yi"
+nnoremap yaq ya"
+nnoremap caq ca"
+nnoremap ciq ci"
+nnoremap diq di"
+nnoremap daq da"
+nnoremap viq vi"
+nnoremap vaq va"

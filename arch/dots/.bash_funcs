@@ -1,0 +1,92 @@
+# fix HDD
+fixhdd() {
+    sudo umount $1
+    sudo ntfsfix $1
+    sudo mount -a
+}
+
+# mvn
+mvn() {
+    rest=$(echo "${@:2:${#}}" | xargs)
+
+    if [[ $1 == "cc" ]]; then
+        if [[ -n "$rest" ]]; then
+            command mvn clean compile "$rest"
+        else
+            command mvn clean compile
+        fi
+    elif [[ $1 == "c" ]]; then
+        if [[ -n "$rest" ]]; then
+            command mvn compile "$rest"
+        else
+            command mvn compile
+        fi
+    elif [[ $1 == "cl" ]]; then
+        if [[ -n "$rest" ]]; then
+            command mvn clean "$rest"
+        else
+            command mvn clean
+        fi
+    elif [[ $1 == "i" ]]; then
+        if [[ -n "$rest" ]]; then
+            command mvn install "$rest"
+        else
+            command mvn install
+        fi
+    elif [[ $1 == "ci" ]]; then
+        if [[ -n "$rest" ]]; then
+            command mvn clean install "$rest"
+        else
+            command mvn clean install
+        fi
+    elif [[ $1 == "gen" ]]; then
+        if [[ -n "$rest" ]]; then
+            command mvn archetype:generate "$rest"
+        else
+            command mvn archetype:generate
+        fi
+    elif [[ $1 == "t" ]]; then
+        if [[ -n "$rest" ]]; then
+            command mvn test "$rest"
+        else
+            command mvn test
+        fi
+    else
+        command mvn "$@"
+    fi
+}
+
+# git
+git() {
+    rest=$(echo "${@:2:${#}}" | xargs)
+
+    if [[ $1 == "s" ]]; then
+        if [[ -n "$rest" ]]; then
+            command git status "$rest"
+        else
+            command git status
+        fi
+    else
+        command git "$@"
+    fi
+}
+
+
+# jav = javac + java
+jav() {
+    name=$(echo $1 | awk 'BEGIN {FS="."} {print $1}')
+    javac "$1" && java "$name"
+}
+
+# last command
+lc() {
+    command history | tail -n 2 | head -n 1 | cut -d " " -f 5- | tr -d "\n"
+}
+
+# if there is no man entry, call CMD --help | less
+man() {
+    command man "$@"
+    if [[ $? -eq 1 ]]; then
+        command "$@" --help | less
+    fi
+}

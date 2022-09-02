@@ -1,0 +1,9 @@
+#!/bin/bash
+
+
+if [[ -n "$1" ]]; then
+    name="$1"
+    shift
+    out_name=$(echo "$name" | awk 'BEGIN {FS=".c"} {print $1}')
+    gcc -g -o "$out_name" "$name" "$@"
+fi

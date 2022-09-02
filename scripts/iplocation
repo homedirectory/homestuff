@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [[ -z $1 ]]; then
+    echo "USAGE: $0 IP"
+    exit
+fi
+
+ip_addr=$1
+
+curl -s -F ip=$ip_addr https://iplocation.com/ -H "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:97.0) Gecko/20100101 Firefox/97.0" | jq

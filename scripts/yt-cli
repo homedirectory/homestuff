@@ -1,0 +1,27 @@
+#!/bin/sh
+
+YT_WATCH="https://www.youtube.com/watch?v="
+
+get_chan_videos() {
+    [[ -z "$1" ]] && echo -e "usage: yt-cli videos CHAN_URL\n\tCHAN_URL must end with /videos" && exit 1
+    local data=$(curl -s "$1" | grep -Eo --color=never "ytInitialData = {.+}</script>" | sed "s/ytInitialData = \({.*}\)<\/script>/\1/g")
+    echo "$data" > /tmp/yt-cli.data
+    local videos=$(jqk gridVideoRenderer <(echo "$data"))
+    echo "$videos" > /tmp/yt-cli.videos
+    local ids=$(echo "$videos" | jq -r ".videoId")
+    local video_urls=$(echo "$ids" | awk -v pref="$YT_WATCH" '{print pref$1}')
+    local titles=$(echo "$videos" | jq -r ".title.runs[0].text")
+    paste -d " " <(echo "$titles") <(echo "$video_urls")
+}
+
+case "$1" in
+  videos)
+      get_chan_videos "$2"
+    ;;
+
+  *)
+    echo -e "usage: yt-cli COMMAND ARGS\n\tCOMMAND=videos"
+    ;;
+esac
+
+

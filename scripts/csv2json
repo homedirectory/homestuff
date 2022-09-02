@@ -1,0 +1,43 @@
+#!/usr/bin/env python3
+
+import csv
+import json
+
+USAGE = "Usage: csv2json [FILE] [-o FILE] [-d DELIM] [-c QUOTE_CHAR]"
+
+def csv_to_dict(filename):
+    data = {"data": []}
+    with open(filename, 'r') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            data["data"].append(row)
+
+    return data
+
+if __name__ == "__main__":
+    import sys
+
+    argc = len(sys.argv)
+    if argc < 2:
+        print(USAGE)
+        sys.exit(1)
+
+    filename = sys.argv[1]
+
+    try:
+        o_ind = sys.argv.index("-o")
+        if argc == o_ind + 1 or sys.argv[o_ind + 1].startswith('-'):
+            print(USAGE)
+            sys.exit(1)
+        out_filename = sys.argv[o_ind + 1]
+    except:
+        out_filename = None
+
+    data = csv_to_dict(filename)
+
+    if out_filename is None:
+        print(str(data))
+    else:
+        with open(out_filename, "w") as f:
+            json.dump(data, f, ensure_ascii=False)
+

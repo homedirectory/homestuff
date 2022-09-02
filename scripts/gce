@@ -1,0 +1,14 @@
+#!/bin/bash
+
+
+tmp=$(mktemp)
+
+cname="$1"
+
+if [[ -n "$cname" ]]; then
+    if [[ -n $(file "$cname" | grep -i "executable") || ! -f "$cname" ]]; then
+        cname="${cname}.c"
+    fi
+    gcc -g "$cname" -o "$tmp" && eval "$tmp"
+    rm "$tmp"
+fi

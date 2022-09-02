@@ -1,0 +1,16 @@
+#!/bin/bash
+
+USAGE="usage: rnmbook [FILENAME]"
+
+FILENAME="$1"
+
+[[ -z "$1" ]] && echo -e "$USAGE" && exit 1
+
+ext=$(echo "$FILENAME" | awk -F "." '{print $NF}')
+
+title=$(exiftool "$FILENAME" | awk -F ":" '{if (match($1, /^Title[[:space:]]*$/)) print $2}' | xargs)
+
+renamed=$(echo "$title" | tr " " "-")
+renamed="${renamed}.${ext}"
+
+echo "$renamed"

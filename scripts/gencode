@@ -1,0 +1,19 @@
+#!/bin/bash
+
+C_CODE="#include <stdio.h>
+
+int main(int argc, char *argv[]) {
+
+}"
+
+if [[ -n "$1" ]]; then
+    case "$1" in
+        "c")
+            echo -e "$C_CODE"
+            ;;
+        *)
+            echo "error: unknown lang: $1"
+            exit 1
+            ;;
+    esac
+fi

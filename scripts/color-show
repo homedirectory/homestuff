@@ -1,0 +1,15 @@
+#!/bin/sh
+
+USAGE="Usage: color-show [-a] [HEX]"
+
+[[ -z "$1" ]] && echo "$USAGE" && exit 1
+
+if [[ "$1" == "--all" || "$1" == "-a" ]]; then
+    for i in {0..255}; do     printf "\x1b[38;5;${i}mcolour${i}\x1b[0m\n"; done
+    exit 0
+fi
+
+hex="$1"
+[[ -n "$(echo $hex | grep '^\#')" || -n "$(echo $hex | grep '^#')" ]] && hex="${hex:1:${#hex}}"
+
+perl -e 'my @n = (1..10); for(@n) { foreach $a(@ARGV){print "\e[48:2::".join(":",unpack("C*",pack("H*",$a)))."m \e[49m"}};print "\n"' "$hex"

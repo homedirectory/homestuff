@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# runs a command for each line of input as its arguments
+
+while read -r input
+do
+    eval " $@" "$input"
+done

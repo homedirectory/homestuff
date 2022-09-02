@@ -1,0 +1,24 @@
+#!/bin/bash
+
+HEIGHT=28
+# full screen width
+WIDTH=190
+BG="#232830"
+
+wid=$(xdotool search --classname urxvtq | head -n 1)
+# launch urxvt (urxvtq classname) if not running
+if [ -z "$wid" ]; then
+   urxvt -name urxvtq -depth 32 -bg "$BG" -cd "$HOME"
+   wid=$(xdotool search --classname urxvtq | head -n 1)
+   xdotool windowfocus $wid
+else
+    # if running but hidden -- show and focus
+    if [ -z "$(xdotool search --onlyvisible --classname urxvtq 2>/dev/null | head -n 1)" ]; then
+        xdotool set_desktop_for_window $wid $(xdotool get_desktop)
+        xdotool windowmap $wid
+        xdotool windowfocus $wid
+    # if running and shown + focused -- hide
+    else
+        xdotool windowunmap $wid
+    fi
+fi

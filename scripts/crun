@@ -1,0 +1,22 @@
+#!/bin/bash
+
+nd=0
+
+tmp=$(mktemp)
+cfile="$tmp"".c"
+xfile="$tmp"
+
+code="#include <stdio.h>
+
+int main() {
+
+}"
+
+echo "$code" > $cfile
+vim $cfile
+gcc $cfile -o $xfile
+eval $xfile
+
+[[ "$1" == "-nd" ]] && nd=1
+
+[[ $nd -eq 0 ]] && rm $cfile $xfile

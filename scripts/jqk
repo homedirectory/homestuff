@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# find all sub trees with root key == KEY
+
+[[ $# -lt 2 ]] && echo "usage: jqk KEY FILE" && exit 1
+
+jq -r ".. | objects | with_entries(select(.key == \""$1"\")) | select(. != {}) | ."$1"" "$2"
+

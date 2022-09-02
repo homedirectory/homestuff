@@ -1,0 +1,21 @@
+#!/bin/bash
+
+USAGE="usage: timer [AMOUNT[m|s]]\nuse m|s to control minutes/seconds (default is seconds)"
+
+
+if [[ $# -eq 0 ]]; then
+    echo -e $USAGE
+    exit 1
+fi
+
+echo "Timer set for $@"
+
+sleep "$@"
+
+echo ""
+echo "Time's up!"
+
+for i in {1..10}; do 
+    say --rate 250 "beep" && sleep 0.5
+done
+

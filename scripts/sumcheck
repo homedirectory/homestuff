@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [[ -z $1 || -z $2 || -z $3 ]]; then
+    echo "Usage: sumcheck [SUM_TYPE] [FILE] [SUM]"
+    exit
+fi
+
+filesum=$(${1}sum "$2" | cut -d " " -f1 | tr '[:upper:]' '[:lower:]')
+inputsum=$(echo "$3" | tr '[:upper:]' '[:lower:]')
+
+echo "file:  $filesum"
+echo "input: $inputsum"
+echo ""
+
+if [[ "$filesum" == "$inputsum" ]]; then
+    echo "MATCH"
+else
+    echo "NO MATCH !!!"
+fi

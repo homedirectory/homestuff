@@ -26,7 +26,7 @@ set smartcase
 set mouse=vn
 
 " enable enter in escape mode
-"map <Enter> o<ESC>
+map <Enter> o<ESC>
 
 " tab = 4 spaces
 set tabstop=4
